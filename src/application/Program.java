@@ -69,11 +69,19 @@ public class Program {
         seller = sellerDao.findById(sellerId);
         String sellerOldName = seller.getName();
         System.out.print("Enter the new name: ");
-        seller.setName(sc.nextLine());
+        String newName = sc.nextLine();
+        seller.setName(newName);
         sellerDao.update(seller);
         System.out.println("Update completed.");
         System.out.println("Old name: " + sellerOldName);
         System.out.println("New name: " + seller.getName());
 
+
+        System.out.println("Delete a seller by its id: ");
+        int idDelete = sc.nextInt();
+        sellerDao.deleteById(idDelete);
+        System.out.println("Deletion completed.");
+
+        sc.close();
     }
 }
