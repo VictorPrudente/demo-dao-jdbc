@@ -41,6 +41,7 @@ public class Program {
         }
         System.out.println();
         sc.nextLine();
+
         System.out.println("Insert a new seller: ");
         System.out.print("Name: ");
         String name = sc.nextLine();
@@ -61,5 +62,18 @@ public class Program {
         sellerDao.insert(newSeller);
         System.out.println("Seller inserted. New id = " + newSeller.getId());
         System.out.println();
+
+        System.out.println("Select an Seller's ID to update its attributes: ");
+        int sellerId = sc.nextInt();
+        sc.nextLine();
+        seller = sellerDao.findById(sellerId);
+        String sellerOldName = seller.getName();
+        System.out.print("Enter the new name: ");
+        seller.setName(sc.nextLine());
+        sellerDao.update(seller);
+        System.out.println("Update completed.");
+        System.out.println("Old name: " + sellerOldName);
+        System.out.println("New name: " + seller.getName());
+
     }
 }
